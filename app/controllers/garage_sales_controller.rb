@@ -1,0 +1,2 @@
+class GarageSalesController < ApplicationController
+end
