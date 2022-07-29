@@ -3,12 +3,12 @@ import LoginPage from "./LoginPage"
 import { Routes, Route } from "react-router-dom";
 import Test from "./Test"
 
-function App() {
+function App () {
   return (
     <div className="App">
-      <LoginPage />
       <Routes>
-        <Route path="/test" element={<Test/>} />
+        <Route path="/" element={ <LoginPage /> } />
+        <Route path="/test" element={ <Test /> } />
       </Routes>
     </div>
   );
