@@ -1,7 +1,9 @@
 class ItemsController < ApplicationController
+
     def index
         render json: Item.all
     end
+
     def show
         item = Item.find(params[:id])
         render json: item, status: :ok
@@ -15,14 +17,16 @@ class ItemsController < ApplicationController
         item = Item.create!(item_params)
         render json: item, stastus: :created
     end
+
     def destroy
        item = Item.find(params[:id])
        item.destroy
-       head :no_content
+       head :no_content 
     end
+
     private
+
     def item_params
         params.permit(:name, :description, :category, :condition, :price, :garage_sale_id, :user_id)
     end
-
 end
