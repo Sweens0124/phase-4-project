@@ -14,7 +14,9 @@
   padding: 20px;
   border: 1px solid black;
   border-radius: 25%;
-  margin: auto;
+  margin-top: 10%;
+  margin-left: auto;
+  margin-right: auto;
   position:relative;
   padding-top: 50px;
   text-align: center;
@@ -41,10 +43,16 @@
   width: 45%;
   height: 100%;
 }
-#website_info {
+/* #website_info {
 
 }
 #login_form {
+} */
+
+.item_card {
+  text-align: left;
+  border: 1px solid black;
+  width: 200px;
 }
 
 
