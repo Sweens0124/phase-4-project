@@ -8,13 +8,11 @@ class ItemsController < ApplicationController
         item = Item.find(params[:id])
         render json: item, status: :ok
     end
-
     def update
         item = Item.find(params[:id])
         item.update!(item_params)
         render json: item, status: :accepted
     end
-
     def create
         item = Item.create!(item_params)
         render json: item, stastus: :created
