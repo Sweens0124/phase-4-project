@@ -9,21 +9,40 @@
 .login {
   background-color: rgb(102, 219, 232);
   font-size: 18px;
-  width: 500px;
-  height: 500px;
+  width: 400px;
+  height: 200px;
   padding: 20px;
   border: 1px solid black;
   border-radius: 25%;
-  text-align: left;
+  margin: auto;
+  position:relative;
+  padding-top: 50px;
+  text-align: center;
 }
+
+.login:before {
+  margin: auto;
+  content:"";
+  width:2px;
+  display:block;
+  height: 100%;
+  left:50%;
+  position:absolute;
+	background-image: -webkit-linear-gradient(to bottom, #fff, #000, #fff);
+  background-image: -moz-linear-gradient(to bottom, #fff, #000, #fff);
+  background-image: -ms-linear-gradient(to bottom, #fff, #000, #fff);
+  background-image: -o-linear-gradient(to bottom, #fff, #000, #fff);
+  background-image: linear-gradient(to bottom, #fff, #000, #fff);
+}
+
 #website_info, #login_form{
-    display: inline-block;
-    box-sizing: border-box;
-    width: 45%;
-    height: 100%;
+  display: inline-block;
+  box-sizing: border-box;
+  width: 45%;
+  height: 100%;
 }
 #website_info {
-    margin-right: 50px;
+
 }
 #login_form {
 }
