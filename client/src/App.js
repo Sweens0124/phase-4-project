@@ -1,5 +1,6 @@
 import './index.css';
 import LoginPage from "./LoginPage"
+import Navbar from "./Navbar"
 import { Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react"
 import ItemCard from './ItemCard';

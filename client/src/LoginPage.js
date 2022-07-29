@@ -1,5 +1,6 @@
 import { useState } from "react"
 // import { useNavigate } from "react-router-dom"
+import Navbar from "./Navbar"
 
 function LoginPage () {
   const [ formData, setFormData ] = useState('')
@@ -22,6 +23,7 @@ function LoginPage () {
 
   return (
     <div>
+      <Navbar />
       <h1 className="title">
         CSS - Come Sell Stuff!
       </h1>
