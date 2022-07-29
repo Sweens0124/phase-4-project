@@ -1,15 +1,25 @@
 import './index.css';
 import LoginPage from "./LoginPage"
 import { Routes, Route } from "react-router-dom";
-import Test from "./Test"
+import { useState, useEffect } from "react"
+import ItemCard from './ItemCard';
 
 function App () {
+  const [ items, setItems ] = useState([])
+
+  useEffect(() => {
+    fetch("/items")
+      .then((r) => r.json())
+      .then((items) => setItems(items));
+  }, []);
+
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={ <LoginPage /> } />
-        <Route path="/test" element={ <Test /> } />
+        {/* <Route path="/items" element={ <ItemContainer /> } items={ items } /> */ }
       </Routes>
+      <ItemCard items={ items } />
     </div>
   );
 }

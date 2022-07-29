@@ -20,8 +20,6 @@ function LoginPage () {
     console.log(formData);
   }
 
-
-
   return (
     <div>
       <h1 className="title">
