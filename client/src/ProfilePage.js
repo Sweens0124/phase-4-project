@@ -1,7 +1,9 @@
 import ItemCard from "./ItemCard";
 import NavBar from './Navbar';
 
-function ProfilePage ({ items, updateItem, removeItem, fetchItems }) {
+function ProfilePage ({ items, users, updateItem, removeItem, fetchItems }) {
+  console.log(users);
+
   return (
     <>
       <NavBar />
