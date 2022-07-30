@@ -5,29 +5,32 @@ import { NavLink, useNavigate } from "react-router-dom"
 
 
 
-const NavBar = ({isLoggedIn, setIsLoggedIn}) => {
+const NavBar = ({ isLoggedIn, setIsLoggedIn, users }) => {
     const history = useNavigate();
 
-    function handleLogout(){
+    function handleLogout () {
         setIsLoggedIn(false);
         history("/.Login");
     };
 
-    const renderLogout = isLoggedIn ? <Button className="ui logout button" variant="dark" onClick={handleLogout} > Logout </Button> : null
+    const renderLogout = isLoggedIn ? <Button className="ui logout button" variant="dark" onClick={ handleLogout } > Logout </Button> : null
 
+    // const renderUserAvatar = users.filter((user) => user.id === userLogged.id)
 
-
-return (
+    return (
         <div>
             <div className="navbar">
-                <NavLink className="navlink" to="/"> Browse Items </NavLink>
-                <NavLink className="navlink" to="/"> Sell Items </NavLink>
+                <NavLink className="navlink" to="/browse-items"> Browse Items </NavLink>
+                <NavLink className="navlink" to="/sell-items"> Sell Items </NavLink>
                 <NavLink className="navlink" to="/.LoginPage"> Contact </NavLink>
                 <NavLink className="navlink" to="/"> Search </NavLink>
-                {renderLogout}
+                { renderLogout }
+                <div className='avatar'>
+                    {/* {renderUserAvatar.image} */ }
+                </div>
             </div>
-            <Form onSubmit={handleLogout}>
-                {renderLogout}
+            <Form onSubmit={ handleLogout }>
+                { renderLogout }
             </Form>
         </div>
     );

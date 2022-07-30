@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Modal, Button, ModalBody } from "react-bootstrap"
+import { Button } from "react-bootstrap"
 
 function ItemCard ({ items }) {
   const [ itemClicked, setItemClicked ] = useState(0)
@@ -7,11 +7,12 @@ function ItemCard ({ items }) {
   // const handleClose = () => setShow(false);
   // const handleShow = () => setShow(true);
 
-  console.log(items);
   const handleClick = (e) => {
     let id = parseInt(e.target.value)
     setItemClicked(id)
   }
+  const logItems = items.map(item => item.condition)
+  console.log(logItems);
 
   const renderItems = items.map((item) => {
     const { id, name, price } = item
