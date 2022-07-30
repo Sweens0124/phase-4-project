@@ -52,7 +52,7 @@
 .item_card {
   text-align: left;
   border: 1px solid black;
-  width: 200px;
+  width: 225px;
 }
 
 /* Add a black background color to the top navigation */
@@ -75,6 +75,57 @@
 .navbar .navlink:hover {
   background-color: rgb(199, 179, 154);
   color: rgb(133, 70, 70);
+}
+
+
+/* button on itemCards */
+
+.item_button {
+  position: flex;
+  margin-left: 55%;
+  appearance: none;
+  background-color: #FFFFFF;
+  border-radius: 40em;
+  border-style: none;
+  box-shadow: #ADCFFF 0 -12px 6px inset;
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: -.24px;
+  outline: none;
+  padding: 1rem 1.3rem;
+  quotes: auto;
+  text-align: center;
+  text-decoration: none;
+  transition: all .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.item_button:hover {
+  background-color: #FFC229;
+  box-shadow: #FF6314 0 -6px 8px inset;
+}
+
+.item_button:active {
+  transform: scale(1.025);
+}
+
+@media (min-width: 768px) {
+  .item_button {
+    font-size: 1.5rem;
+    padding: .75rem 2rem;
+  }
+}
+
+.single_item {
+  border: 2px solid black;
+  
 }
 
 

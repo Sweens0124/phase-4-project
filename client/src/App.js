@@ -20,7 +20,7 @@ function App () {
         <Route path="/" element={ <LoginPage /> } />
         {/* <Route path="/items" element={ <ItemContainer /> } items={ items } /> */ }
       </Routes>
-      <ItemCard items={ items } />
+      { <ItemCard items={ items } /> }
     </div>
   );
 }
