@@ -1,5 +1,5 @@
 import { useState } from "react"
-// import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import Navbar from "./Navbar"
 
 function LoginPage () {
@@ -17,8 +17,11 @@ function LoginPage () {
   const handleSubmit = (e) => {
     e.preventDefault();
     // add fetch here, POST request, URL is proxied already so just use route from backend.
-    alert('User has logged in: ' + formData.name)
-    console.log(formData);
+  }
+
+  const navigate = useNavigate();
+  const navigateToProfile = () => {
+    navigate('/profile')
   }
 
   return (
@@ -38,7 +41,7 @@ function LoginPage () {
           <input type="text" name="name" onChange={ handleChange } value={ formData.name } /><br />
           <label>Password:</label>
           <input type="password" name="pass" onChange={ handleChange } value={ formData.pass } />
-          <button id="submit_login" type="submit">Submit Login</button>
+          <button id="submit_login" onClick={ navigateToProfile } type="submit">Submit Login</button>
         </form>
       </div>
     </div>

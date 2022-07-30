@@ -3,7 +3,9 @@ import LoginPage from "./LoginPage"
 import Navbar from "./Navbar"
 import { Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react"
+import ProfilePage from "./ProfilePage"
 import ItemCard from './ItemCard';
+// import ProfilePage from "./ProfilePage"
 
 function App () {
   const [ items, setItems ] = useState([])
@@ -18,9 +20,8 @@ function App () {
     <div className="App">
       <Routes>
         <Route path="/" element={ <LoginPage /> } />
-        {/* <Route path="/items" element={ <ItemContainer /> } items={ items } /> */ }
+        <Route path='/profile' element={ <ProfilePage items={ items } /> } />
       </Routes>
-      { <ItemCard items={ items } /> }
     </div>
   );
 }

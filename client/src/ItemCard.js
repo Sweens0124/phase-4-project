@@ -2,11 +2,12 @@ import { useState } from "react"
 import { Modal, Button, ModalBody } from "react-bootstrap"
 
 function ItemCard ({ items }) {
-  const [ show, setShow ] = useState(false);
   const [ itemClicked, setItemClicked ] = useState(0)
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  // const [ show, setShow ] = useState(false);
+  // const handleClose = () => setShow(false);
+  // const handleShow = () => setShow(true);
 
+  console.log(items);
   const handleClick = (e) => {
     let id = parseInt(e.target.value)
     setItemClicked(id)
@@ -23,6 +24,7 @@ function ItemCard ({ items }) {
       </div>
     )
   })
+
   if (itemClicked === 0) {
     return (
       <>
