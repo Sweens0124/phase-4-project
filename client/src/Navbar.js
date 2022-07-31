@@ -5,7 +5,7 @@ import { NavLink, useNavigate } from "react-router-dom"
 
 
 
-const NavBar = ({ isLoggedIn, setIsLoggedIn, users }) => {
+const Navbar = ({ isLoggedIn, setIsLoggedIn  }) => {
     const history = useNavigate();
 
     function handleLogout () {
@@ -22,7 +22,7 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, users }) => {
             <div className="navbar">
                 <NavLink className="navlink" to="/browse-items"> Browse Items </NavLink>
                 <NavLink className="navlink" to="/sell-items"> Sell Items </NavLink>
-                <NavLink className="navlink" to="/.LoginPage"> Contact </NavLink>
+                <NavLink className="navlink" to="/.Contact"> Contact </NavLink>
                 <NavLink className="navlink" to="/"> Search </NavLink>
                 { renderLogout }
                 <div className='avatar'>
@@ -36,5 +36,5 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, users }) => {
     );
 };
 
-export default NavBar;
+export default Navbar;
 
