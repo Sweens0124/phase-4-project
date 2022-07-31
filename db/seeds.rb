@@ -10,10 +10,10 @@ GarageSale.create(name: "CSS", location: "Denver")
 
 puts "Creating Users..."
 
-User.create(name: "Thomas", email: "tlncook85@gmail.com")
-User.create(name: "Kiran", email: "kiranphillips61@gmail.com")
-User.create(name: "Lucas", email: "lsweeney0124@gmail.com")
-User.create(name: "Ikmann", email: "ikmann12@gmail.com")
+User.create(username: "Thomas", email: "tlncook85@gmail.com", password: "1985")
+User.create(username: "Kiran", email: "kiranphillips61@gmail.com", password: "1993")
+User.create(username: "Lucas", email: "lsweeney0124@gmail.com", password: "1996")
+User.create(username: "Ikmann", email: "ikmann12@gmail.com", password: "2000")
 
 puts "Creating Items for Sale..."
 

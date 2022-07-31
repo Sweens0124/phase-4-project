@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
     end
     def create
         item = Item.create!(item_params)
-        render json: item, stastus: :created
+        render json: item, status: :created
     end
 
     def destroy
