@@ -3,9 +3,8 @@ import './index.css';
 import LoginPage from "./LoginPage"
 import { Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react"
-import ProfilePage from "./ProfilePage"
-import AllItemsPage from "./AllItemsPage"
-import ItemSellForm from "./ItemSellForm"
+//import ProfilePage from "./ProfilePage"
+import Contact from "./Contact"
 
 
 function App () {
@@ -29,9 +28,9 @@ function App () {
     <div className="App">
       <Routes>
         <Route path="/" element={ <LoginPage /> } />
-        <Route path='/profile' element={ <ProfilePage items={ items } users={ users } /> } />
-        <Route path='/browse-items' element={ <AllItemsPage items={ items } users={ users } /> } />
-        <Route path='/sell-items' element={ <ItemSellForm /> } />
+        {/* <Route path='/profile' element={ <ProfilePage items={ items } users={ users } /> } /> */}
+
+        <Route path='/Contact' element={ <Contact /> } />
       </Routes>
     </div>
   );
