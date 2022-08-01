@@ -1,9 +1,11 @@
 import React from "react";
+import Navbar from "./Navbar"
 
 const Contact = () => {
 
   return (
     <div id="contacts">
+      <Navbar />
       <h1>// Contact</h1>
         <h2>Kiran Phillips </h2>
           <div><a href="mailto: kiranphillips61@gmail.com">kiranphillips61@gmail.com</a></div>
