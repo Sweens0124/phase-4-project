@@ -21,7 +21,7 @@ function LoginPage () {
 
   const navigate = useNavigate();
   const navigateToProfile = () => {
-    navigate('/ProfilePage')
+    navigate('/profile')
   }
 
   return (
