@@ -1,6 +1,6 @@
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
-import Navbar from "./Navbar"
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Navbar from "./Navbar";
 
 function LoginPage () {
   const [ formData, setFormData ] = useState('')
@@ -21,7 +21,7 @@ function LoginPage () {
 
   const navigate = useNavigate();
   const navigateToProfile = () => {
-    navigate('/profile')
+    navigate('/ProfilePage')
   }
 
   return (
