@@ -2,10 +2,11 @@ import React from "react";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { NavLink, useNavigate } from "react-router-dom";
+import BrowseItems from './BrowseItems';
 
 
 
-const Navbar = ({ isLoggedIn, setIsLoggedIn  }) => {
+const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
     const history = useNavigate();
 
     function handleLogout () {
@@ -13,18 +14,18 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn  }) => {
         history("/.Login");
     };
 
-    const renderLogout = isLoggedIn ? <Button className="ui logout button" variant="dark" 
-    onClick={ handleLogout } > Logout </Button> : null
+    const renderLogout = isLoggedIn ? <Button className="ui logout button" variant="dark"
+        onClick={ handleLogout } > Logout </Button> : null
 
     // const renderUserAvatar = users.filter((user) => user.id === userLogged.id)
 
     return (
         <div>
             <div className="navbar">
-                <NavLink className="navlink" to="/.ProfilePage"> Browse Items </NavLink>
-                <NavLink className="navlink" to="/.ItemForm"> Sell Items </NavLink>
-                <NavLink className="navlink" to="/.Contact"> Contact </NavLink>
-                <NavLink className="navlink" to="/"> Search </NavLink>
+                <NavLink className="navlink" to="/browse-items" element={ <BrowseItems /> }> Browse Items </NavLink>
+                <NavLink className="navlink" to="/item-form"> Sell Items </NavLink>
+                <NavLink className="navlink" to="/contact"> Contact </NavLink>
+                {/* <NavLink className="navlink" to="/"> Search </NavLink> */ }
                 { renderLogout }
                 <div className='avatar'>
                     {/* {renderUserAvatar.image} */ }
