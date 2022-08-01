@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import ItemCollection from './ItemCollection'
+import Navbar from './Navbar'
 
 function UserPage () {
   const [ user, setUser ] = useState()
@@ -26,22 +26,26 @@ function UserPage () {
   }, [])
 
   console.log(user);
+
   if (loading) return <h1>Loading</h1>
   if (errors) return <h1>{ errors }</h1>
 
   return (
-    <div>
-      <h1>{ user.username }</h1>
-      <h3>Items:</h3>
-      <ul>
-        { user.items.map((item) => (
-          <li>
-            <h2>{ item.name }</h2>
-            <p>Price: ${ item.price }</p>
-          </li>
-        )) }
-      </ul>
-    </div>
+    <>
+      <Navbar />
+      <div>
+        <h1>{ user.username }</h1>
+        <h3>Items:</h3>
+        <ul>
+          { user.items.map((item) => (
+            <li>
+              <h2>{ item.name }</h2>
+              <p>Price: ${ item.price }</p>
+            </li>
+          )) }
+        </ul>
+      </div>
+    </>
   )
 }
 
