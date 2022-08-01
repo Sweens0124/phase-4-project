@@ -1,26 +1,27 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Navbar from "./Navbar";
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
-function LoginPage () {
+function SignUp () {
   const [ formData, setFormData ] = useState({
     username: '',
     email: '',
     password: ''
   })
+
+
   const [ errors, setErrors ] = useState([])
   const navigate = useNavigate()
-
-  const { username, password } = formData
+  const { username, email, password } = formData
 
   function handleSubmit (e) {
     e.preventDefault()
     const user = {
       username,
+      email,
       password
     }
-    // Logs in user
-    fetch(`/login`, {
+
+    fetch(`/users`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(user)
@@ -31,14 +32,10 @@ function LoginPage () {
             navigate(`/users/${user.id}`)
           })
         } else {
-          res.json().then(json => setErrors(json.errors))
+          res.json().then(json => setErrors(Object.entries(json.errors)))
         }
       })
 
-  }
-
-  const navigateToSignUp = () => {
-    navigate('signup')
   }
 
   const handleChange = (e) => {
@@ -48,7 +45,6 @@ function LoginPage () {
 
   return (
     <div>
-      <Navbar />
       <h1 className="title">
         CSS - Come Sell Stuff!
       </h1>
@@ -58,16 +54,26 @@ function LoginPage () {
             Welcome to CSS, where you can buy or sell items at your local garage sale!
           </div>
         </div>
-        <form id="login_form" onSubmit={ handleSubmit }>
-          <label>Username:</label><br />
-          <input type="text" name="username" value={ username } onChange={ handleChange } /><br />
+
+        <form id="login_form">
+          <label>
+            Username:
+          </label><br />
+          <input type="text" name="username" onChange={ handleChange } value={ username } /><br />
+
+          <label>
+            Email
+          </label>
+          <input type='text' name='email' value={ email } onChange={ handleChange } />
+
           <label>Password:</label>
-          <input type="password" name="password" value={ password } onChange={ handleChange } />
-          <button id="submit_login" type="submit">Login</button><br />
-          <button id="submit_login" onClick={ navigateToSignUp } type='submit'>Signup Here!</button>
+          <input type="password" name="password" onChange={ handleChange } value={ password } />
+
+          <input type='submit' value='Sign up!' onSubmit={ handleSubmit } />
         </form>
       </div>
     </div>
   )
 }
-export default LoginPage;
+
+export default SignUp;
