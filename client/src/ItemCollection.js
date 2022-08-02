@@ -1,5 +1,6 @@
 import React from "react";
 import ItemCard from "./ItemCard"
+import Navbar from './Navbar';
 
 function ItemCollection ({ items, updateItem, removeForever, fetchItems }) {
 
@@ -14,6 +15,7 @@ function ItemCollection ({ items, updateItem, removeForever, fetchItems }) {
   ))
   return (
     <div className="ui five column grid">
+      <Navbar />
       <div id="itemCard">
         { itemInfo }
       </div>

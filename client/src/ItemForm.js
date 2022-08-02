@@ -1,139 +1,102 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 
-function ItemForm ({ addItem }) {
-    const [ show, setShow ] = useState(false);
-    const [ errors, setErrors ] = useState([])
-    const [ formName, setFormName ] = useState('')
-    const [ formPrice, setFormPrice ] = useState('')
-    const [ formDescription, setFormDescription ] = useState('')
-    const [ formCategory, setFormCategory ] = useState(0)
-    const [ formCondition, setFormCondition ] = useState(0)
+function ItemForm ({ users, garageSales }) {
+  const [ show, setShow ] = useState(true);
 
-    const nameChangeHandler = (e) => {
-        setFormName(e.target.value)
-    }
+  const [ name, setName ] = useState('')
+  const [ description, setDescription ] = useState('')
+  const [ condition, setCondition ] = useState('')
+  const [ category, setCategory ] = useState('')
+  const [ price, setPrice ] = useState('')
+  const [ image, setImage ] = useState(null)
 
-    const priceChangeHandler = (e) => {
-        setFormPrice(e.target.value)
-    }
+  const handleItemSubmit = (e) => {
+    e.preventDefault()
 
-    const descriptionChangeHandler = (e) => {
-        setFormDescription(e.target.value)
-    }
+    const formData = new FormData()
+    formData.append('user_id', users[ 3 ].id)
+    formData.append('garage_sale_id', garageSales[ 0 ].id)
+    formData.append('name', name)
+    formData.append('description', description)
+    formData.append('condition', condition)
+    formData.append('category', category)
+    formData.append('price', price)
+    formData.append('image', image)
 
-    const categoryChangeHandler = (e) => {
-        setFormCategory(e.target.value)
-    }
+    fetch('/items', {
+      method: 'POST',
+      body: formData
+    })
 
-    const conditionChangeHandler = (e) => {
-        setFormCondition(e.target.value)
-    }
+  }
 
-    function onSubmit (e) {
-        e.preventDefault()
-        const formData = {
-            name: formName,
-            description: formDescription,
-            category: formCategory,
-            condition: formCondition,
-            price: formPrice,
-        }
+  return (
+    <>
+      <Modal show={ show } >
+        <Modal.Title>Add New Item:</Modal.Title>
+        <Modal.Body>
+          <Form onSubmit={ handleItemSubmit }>
+            <Form.Group className="mb-3" controlId="formBasicName">
+              <Form.Label>Name</Form.Label>
+              <Form.Control name='name' value={ name } onChange={ (e) => setName(e.target.value) } placeholder="Enter Name" />
+            </Form.Group>
 
-        fetch(`/items`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ ...formData, ongoing: true })
-        })
-            .then(res => {
-                if (res.ok) {
-                    res.json().then(addItem)
-                } else {
-                    //Display errors
-                    res.json().then(data => {
-                        // debugger
-                        setErrors(Object.entries(data.errors))
-                    })
-                }
-            })
-    }
+            <Form.Group className="mb-3" controlId="formBasicPrice">
+              <Form.Label>Price</Form.Label>
+              <Form.Control name='price' value={ price } onChange={ (e) => setPrice(e.target.value) } placeholder="Price" />
+            </Form.Group>
 
-    const handleShow = () => {
-        setShow(true)
-    }
-    const handleClose = () => {
-        setShow(false)
-    };
+            <Form.Group className="mb-3" controlId="formBasicDescription">
+              <Form.Label>Description</Form.Label>
+              <Form.Control name='description' value={ description } onChange={ (e) => setDescription(e.target.value) } placeholder="Description" />
+            </Form.Group>
 
-    return (
-        <>
-            <div id="newItem">
-                <div onClick={ handleShow }>
-                    <Button>TEST</Button>
-                </div>
-            </div>
-            <Modal show={ show } onHide={ handleClose }>
-                <Modal.Title>Add New Item:</Modal.Title>
-                <Modal.Body>
-                    <Form onSubmit={ onSubmit }>
-                        <Form.Group className="mb-3" controlId="formBasicName">
-                            <Form.Label>Name</Form.Label>
-                            <Form.Control name='name' value={ formName } onChange={ nameChangeHandler } placeholder="Enter Name" />
-                        </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicSelect">
+              <Form.Label>Category</Form.Label>
+              {/* <Form.Control value={ formData.category } hidden /> */ }
+              <Form.Select name="category" value={ category } onChange={ (e) => setCategory(e.target.value) }>
+                <option value="">Select a Category</option>
+                <option value="Music">Music</option>
+                <option value="Electronics">Electronics</option>
+                <option value="Furniture">Furniture</option>
+                <option value="Sports">Sports</option>
+                <option value="Clothing">Clothing</option>
+                <option value="Appliances">Appliances</option>
+              </Form.Select>
+            </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicPrice">
-                            <Form.Label>Price</Form.Label>
-                            <Form.Control name='price' value={ formPrice } onChange={ priceChangeHandler } placeholder="Price" />
-                        </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicSelect">
+              <Form.Label>Condition</Form.Label>
+              <Form.Control value={ condition } hidden />
+              <Form.Select name="condition" value={ condition } onChange={ (e) => setCondition(e.target.value) }>
+                <option value="0">Select a Condition</option>
+                <option value="Great">Great</option>
+                <option value="Good">Good</option>
+                <option value="Bad">Bad</option>
+              </Form.Select>
+            </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicDescription">
-                            <Form.Label>Description</Form.Label>
-                            <Form.Control name='description' value={ formDescription } onChange={ descriptionChangeHandler } placeholder="Description" />
-                        </Form.Group>
+            <Form.Group>
+              <Form.Label>
+                Upload image
+              </Form.Label>
+              <Form.Control name="image" type="file" accept="image/*" onChange={ (e) => setImage(e.target.files[ 0 ]) } />
+            </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicSelect">
-                            <Form.Label>Category</Form.Label>
-                            {/* <Form.Control value={ formData.category } hidden /> */ }
-                            <Form.Select value={ formCategory } onChange={ categoryChangeHandler }>
-                                <option value="0">Select a Category</option>
-                                <option value="1">Music</option>
-                                <option value="2">Electronics</option>
-                                <option value="3">Furniture</option>
-                                <option value="4">Sports</option>
-                                <option value="5">Clothing</option>
-                                <option value="6">Appliances</option>
-                            </Form.Select>
-                        </Form.Group>
-
-                        <Form.Group className="mb-3" controlId="formBasicSelect">
-                            <Form.Label>Condition</Form.Label>
-                            <Form.Control value={ formCondition } hidden />
-                            <Form.Select value={ formCondition } onChange={ conditionChangeHandler }>
-                                <option value="0">Select a Condition</option>
-                                <option value="1">Great</option>
-                                <option value="2">Good</option>
-                                <option value="3">Bad</option>
-                            </Form.Select>
-                        </Form.Group>
-
-                        {/* <Form.Group className="mb-3" controlId="formBasicImageUrl">
-                            <Form.Label>Item Image Url</Form.Label>
-                            <Form.Control value={ enteredImageUrl } onChange={ imageUrlChangeHandler } placeholder="" />
-                        </Form.Group> */}
-
-                        <ButtonGroup className="me-2" aria-label="Submit Button">
-                            <Button variant="outline-primary" type="submit">
-                                Submit
-                            </Button>
-                        </ButtonGroup>
-                    </Form>
-                </Modal.Body>
-            </Modal>
-        </>
-    );
+            <ButtonGroup className="me-2" aria-label="Submit Button">
+              <Button variant="outline-primary" type="submit">
+                Submit
+              </Button>
+            </ButtonGroup>
+          </Form>
+        </Modal.Body>
+      </Modal>
+    </>
+  );
 }
 
 

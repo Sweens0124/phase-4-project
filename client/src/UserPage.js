@@ -8,10 +8,6 @@ function UserPage ({ items }) {
   const [ errors, setErrors ] = useState(false)
   const [ itemClicked, setItemClicked ] = useState(0)
 
-  const arethereanyfuckingimages = () => items.map(item => console.log(item))
-
-  arethereanyfuckingimages()
-
   const params = useParams()
   const { id } = params
 
@@ -42,8 +38,8 @@ function UserPage ({ items }) {
   if (itemClicked === 0) {
     return (
       <>
-        <Navbar />
         <div>
+          <Navbar />
           <h1>{ user.username }</h1>
           <h3>Items:</h3>
           { user.items.map((item) => (

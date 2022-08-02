@@ -10,6 +10,13 @@ import SignUp from './Signup';
 function App () {
   const [ users, setUsers ] = useState([])
   const [ items, setItems ] = useState([])
+  const [ garageSales, setGarageSales ] = useState([])
+
+  useEffect(() => {
+    fetch("/garage_sales")
+      .then((r) => r.json())
+      .then((garageSales) => setGarageSales(garageSales));
+  }, []);
 
   useEffect(() => {
     fetch("/users")
@@ -23,8 +30,6 @@ function App () {
       .then((items) => setItems(items));
   }, []);
 
-  const addItem = (item) => setItems([ ...items, item ])
-
   return (
     <div className="App">
       <Routes>
@@ -32,8 +37,8 @@ function App () {
         <Route path='/browse-items' element={ <ItemCollection items={ items } /> } />
         <Route path='/users/:id' element={ <UserPage items={ items } /> } />
         <Route path='/signup' element={ <SignUp /> } />
-        <Route path='/item-form' element={ <ItemForm addItem={ addItem } /> } />
-        {/* <Route path='/contact' element={ <Contact /> } /> */ }
+        <Route path='/item-form' element={ <ItemForm users={ users } garageSales={ garageSales } /> } />
+        <Route path='/contact' element={ <Contact /> } />
 
       </Routes>
     </div>
