@@ -8,12 +8,11 @@ function UserPage ({ items }) {
   const [ errors, setErrors ] = useState(false)
   const [ itemClicked, setItemClicked ] = useState(0)
 
-
-  // const params = useParams()
-  // const { id } = params
+  const params = useParams()
+  const { id } = params
 
   useEffect(() => {
-    fetch(`/items`)
+    fetch(`/users/${id}`)
       .then(res => {
         if (res.ok) {
           res.json().then(user => {
