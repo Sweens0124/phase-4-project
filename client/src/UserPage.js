@@ -38,8 +38,8 @@ function UserPage ({ items }) {
   if (itemClicked === 0) {
     return (
       <>
-        <Navbar />
         <div>
+          <Navbar />
           <h1>{ user.username }</h1>
           <h3>Items:</h3>
           { user.items.map((item) => (

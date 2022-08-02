@@ -1,7 +1,7 @@
 class GarageSalesController < ApplicationController
 
-    def show
-       garageSale = GarageSale.find(params[:id])
+    def index
+       garageSale = GarageSale.all
        render json: garageSale
     end
 end

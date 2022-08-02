@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "./Navbar";
 
 function LoginPage () {
   const [ formData, setFormData ] = useState({
@@ -47,27 +46,40 @@ function LoginPage () {
   }
 
   return (
-    <div>
-      <Navbar />
-      <h1 className="title">
-        CSS - Come Sell Stuff!
-      </h1>
-      <div className="login">
-        <div id="website_info">
-          <div>
-            Welcome to CSS, where you can buy or sell items at your local garage sale!
+    <>
+      <div id='login'>
+        <form widths='equal' onSubmit={ handleSubmit }>
+          <h3 id='logincolor'> // CSS: Come $ell $tuff </h3>
+          <div className='logininput'>
+            <input
+              className='input'
+              type='text'
+              name='username'
+              placeholder='Username'
+              fluid lable='username'
+              value={ formData.username }
+              onChange={ handleChange }
+            />
           </div>
-        </div>
-        <form id="login_form" onSubmit={ handleSubmit }>
-          <label>Username:</label><br />
-          <input type="text" name="username" value={ username } onChange={ handleChange } /><br />
-          <label>Password:</label>
-          <input type="password" name="password" value={ password } onChange={ handleChange } />
-          <button id="submit_login" type="submit">Login</button><br />
-          <button id="submit_login" onClick={ navigateToSignUp } type='submit'>Signup Here!</button>
+          <div className='logininput'>
+            <input
+              className='input'
+              type='password'
+              name='password'
+              placeholder='Password'
+              value={ formData.password }
+              onChange={ handleChange }
+            />
+          </div>
+          <div>
+            <button id='submit_login' type='submit'>Login</button>
+          </div>
+          <div>
+            <button id='submit_signup' onClick={ navigateToSignUp } type='submit'>Signup Here!</button>
+          </div>
         </form>
       </div>
-    </div>
+    </>
   )
 }
 export default LoginPage;
