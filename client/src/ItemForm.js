@@ -5,23 +5,43 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 
 function ItemForm ({ addItem }) {
-    const [ show, setShow ] = useState(true);
-    const [ formData, setFormData ] = useState({
-        name: '',
-        description: '',
-        category: '',
-        condition: '',
-        price: '',
-    })
+    const [ show, setShow ] = useState(false);
     const [ errors, setErrors ] = useState([])
+    const [ formName, setFormName ] = useState('')
+    const [ formPrice, setFormPrice ] = useState('')
+    const [ formDescription, setFormDescription ] = useState('')
+    const [ formCategory, setFormCategory ] = useState(0)
+    const [ formCondition, setFormCondition ] = useState(0)
 
-    const handleChange = (e) => {
-        const { name, value } = e.target
-        setFormData({ ...formData, [ name ]: value })
+    const nameChangeHandler = (e) => {
+        setFormName(e.target.value)
+    }
+
+    const priceChangeHandler = (e) => {
+        setFormPrice(e.target.value)
+    }
+
+    const descriptionChangeHandler = (e) => {
+        setFormDescription(e.target.value)
+    }
+
+    const categoryChangeHandler = (e) => {
+        setFormCategory(e.target.value)
+    }
+
+    const conditionChangeHandler = (e) => {
+        setFormCondition(e.target.value)
     }
 
     function onSubmit (e) {
         e.preventDefault()
+        const formData = {
+            name: formName,
+            description: formDescription,
+            category: formCategory,
+            condition: formCondition,
+            price: formPrice,
+        }
 
         fetch(`/items`, {
             method: 'POST',
@@ -41,38 +61,43 @@ function ItemForm ({ addItem }) {
             })
     }
 
-
+    const handleShow = () => {
+        setShow(true)
+    }
     const handleClose = () => {
         setShow(false)
     };
 
-
-
     return (
         <>
+            <div id="newItem">
+                <div onClick={ handleShow }>
+                    <Button>TEST</Button>
+                </div>
+            </div>
             <Modal show={ show } onHide={ handleClose }>
                 <Modal.Title>Add New Item:</Modal.Title>
                 <Modal.Body>
                     <Form onSubmit={ onSubmit }>
                         <Form.Group className="mb-3" controlId="formBasicName">
                             <Form.Label>Name</Form.Label>
-                            <Form.Control name='name' value={ formData.name } onChange={ handleChange } placeholder="Enter Name" />
+                            <Form.Control name='name' value={ formName } onChange={ nameChangeHandler } placeholder="Enter Name" />
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicPrice">
                             <Form.Label>Price</Form.Label>
-                            <Form.Control name='price' value={ formData.price } onChange={ handleChange } placeholder="Price" />
+                            <Form.Control name='price' value={ formPrice } onChange={ priceChangeHandler } placeholder="Price" />
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicDescription">
                             <Form.Label>Description</Form.Label>
-                            <Form.Control name='description' value={ formData.description } onChange={ handleChange } placeholder="Description" />
+                            <Form.Control name='description' value={ formDescription } onChange={ descriptionChangeHandler } placeholder="Description" />
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicSelect">
                             <Form.Label>Category</Form.Label>
                             {/* <Form.Control value={ formData.category } hidden /> */ }
-                            <Form.Select value={ formData.category } onChange={ handleChange }>
+                            <Form.Select value={ formCategory } onChange={ categoryChangeHandler }>
                                 <option value="0">Select a Category</option>
                                 <option value="1">Music</option>
                                 <option value="2">Electronics</option>
@@ -85,12 +110,12 @@ function ItemForm ({ addItem }) {
 
                         <Form.Group className="mb-3" controlId="formBasicSelect">
                             <Form.Label>Condition</Form.Label>
-                            <Form.Control value={ formData.condition } hidden />
-                            <Form.Select value={ formData.condition } onChange={ handleChange }>
+                            <Form.Control value={ formCondition } hidden />
+                            <Form.Select value={ formCondition } onChange={ conditionChangeHandler }>
                                 <option value="0">Select a Condition</option>
-                                <option value="Great">Great</option>
-                                <option value="Good">Good</option>
-                                <option value="Bad">Bad</option>
+                                <option value="1">Great</option>
+                                <option value="2">Good</option>
+                                <option value="3">Bad</option>
                             </Form.Select>
                         </Form.Group>
 
