@@ -8,15 +8,12 @@ function UserPage ({ items }) {
   const [ errors, setErrors ] = useState(false)
   const [ itemClicked, setItemClicked ] = useState(0)
 
-  const arethereanyfuckingimages = () => items.map(item => console.log(item))
 
-  arethereanyfuckingimages()
-
-  const params = useParams()
-  const { id } = params
+  // const params = useParams()
+  // const { id } = params
 
   useEffect(() => {
-    fetch(`/users/${id}`)
+    fetch(`/items`)
       .then(res => {
         if (res.ok) {
           res.json().then(user => {

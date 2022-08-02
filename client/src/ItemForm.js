@@ -16,6 +16,8 @@ function ItemForm ({ addItem }) {
     condition: '',
     price: '',
     image: '',
+    user_id: 3,
+    garage_sale_id: 1
   })
   const params = useParams()
   const { id } = params
@@ -30,7 +32,7 @@ function ItemForm ({ addItem }) {
   function onSubmit (e) {
     e.preventDefault()
 
-    fetch(`/users/1`, {
+    fetch(`/items`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ ...formData, ongoing: true })
