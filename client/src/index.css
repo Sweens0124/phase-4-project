@@ -9,6 +9,9 @@ body {
   background-repeat: none;
   background-size: 100%;
 }
+html {
+  background-color: #33240c;
+}
 
 #login {
   /* background-color: rgb(102, 219, 232);
@@ -26,8 +29,11 @@ body {
   text-align: center; */
   background-image: url(https://media.istockphoto.com/photos/nobody-at-garage-sale-picture-id1262901956?k=20&m=1262901956&s=612x612&w=0&h=hfvguVH_ZvfJlceaYdETKB1vYzxhRCu9Geg6u6Hmz60=);
   background-size: 100%;
+  height: 100%;
+  margin-top: -60px;
   background-repeat: no-repeat;
-  align-content: center;
+  text-align: right;
+  padding-right: 125px;
 }
 
 #login form {
@@ -35,24 +41,49 @@ body {
 }
 
 #logincolor {
-padding-top: 20px;
-padding-left: 15px;
-color: #FFFFFF;
+  padding-top: 40px;
+  /* padding-left: 15px; */
+  color: #f9f8f8;
+  text-shadow: 2px .5px rgb(79, 73, 73);
+  font-size: 60px;
 }
 
 .input {
  opacity: 0.7;
+ border-color: rgb(169, 114, 4);
 }
 
-.logininput {
-  padding-left: 10px;
+/* .logininput {
+
 }
 
-#loginbutton {
-/* padding-left: 20px; */
-margin-left: 10px;
+#submit_login {
+
 }
 
+#submit_signup {
+
+} */
+h1 {
+  color: #f9f8f8;
+text-shadow: 2px 3px rgb(79, 73, 73);
+font-size: xxx-large;
+padding-left: 15px;
+
+}
+
+h2 {
+  color: #5b3109;
+  text-shadow: 1px 2px rgb(252, 251, 251);
+  padding-left: 15px;
+}
+
+#contacts {
+  background-image: url(https://media.istockphoto.com/photos/second-hand-clothing-for-sale-at-a-garage-sale-picture-id1333790717?b=1&k=20&m=1333790717&s=170667a&w=0&h=T2GbrkReOHaNTU19KT3rRyW5nN4IYcAIsTCZVLU4fqU=);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  padding-bottom: 180px;
+}
 
 .title {
   position: flex;
@@ -63,7 +94,7 @@ margin-left: 10px;
   margin: auto;
 }
 
-.login:before {
+/* .login:before {
   margin: auto;
   content:"";
   width:2px;
@@ -76,7 +107,7 @@ margin-left: 10px;
   background-image: -ms-linear-gradient(to bottom, #fff, #000, #fff);
   background-image: -o-linear-gradient(to bottom, #fff, #000, #fff);
   background-image: linear-gradient(to bottom, #fff, #000, #fff);
-}
+} */
 
 #website_info, #login_form{
   display: inline-block;
@@ -167,6 +198,41 @@ margin-left: 10px;
 .single_item {
   border: 2px solid black;
   
+}
+a:link {
+  color: rgb(116, 1, 1);
+  background-color: transparent;
+  text-decoration: none;
+  text-align: left;
+  padding-left: 15px;
+
+}
+
+a:visited {
+  color: rgb(21, 114, 109);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgb(1, 1, 1);
+  text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px rgb(217, 134, 2),
+    0 0 82px rgb(122, 83, 0),
+    0 0 92px rgb(237, 151, 22),
+    0 0 102px rgb(220, 195, 5),
+    0 0 151px rgb(156, 199, 4);
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+a:active {
+  color: yellow;
+  background-color: transparent;
+  text-decoration: underline;
 }
 
 
