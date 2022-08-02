@@ -30,7 +30,7 @@ function App () {
       <Routes>
         <Route path="/" element={ <LoginPage /> } />
         <Route path='/browse-items' element={ <ItemCollection items={ items } /> } />
-        <Route path='/users/:id' element={ <UserPage /> } />
+        <Route path='/users/:id' element={ <UserPage items={ items } /> } />
         <Route path='/signup' element={ <SignUp /> } />
         <Route path='/item-form' element={ <ItemForm addItem={ addItem } /> } />
         {/* <Route path='/contact' element={ <Contact /> } /> */ }

@@ -135,9 +135,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url(https://toppng.com/uploads/preview/transparent-stock-garage-sale-clipart-garage-sale-11562946594efwlflrd5b.png);
+  /* background-image: url(https://toppng.com/uploads/preview/transparent-stock-garage-sale-clipart-garage-sale-11562946594efwlflrd5b.png); */
   background-repeat: none;
   background-size: 100%;
+}
+
+.item_img {
+  height: 100px;
+  width: 75px;
 }
 
 
