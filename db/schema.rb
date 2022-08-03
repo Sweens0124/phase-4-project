@@ -56,11 +56,11 @@ ActiveRecord::Schema.define(version: 2022_08_02_175738) do
     t.string "category"
     t.string "condition"
     t.float "price"
+    t.string "image"
     t.bigint "garage_sale_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "image"
     t.index ["garage_sale_id"], name: "index_items_on_garage_sale_id"
     t.index ["user_id"], name: "index_items_on_user_id"
   end

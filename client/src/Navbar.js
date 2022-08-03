@@ -11,7 +11,7 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
 
     function handleLogout () {
         setIsLoggedIn(false);
-        history("/.Login");
+        history("/");
     };
 
     const renderLogout = isLoggedIn ? <Button className="ui logout button" variant="dark"
@@ -31,9 +31,9 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
                     {/* {renderUserAvatar.image} */ }
                 </div>
             </div>
-            <Form onSubmit={ handleLogout }>
+            {/* <Form onSubmit={ handleLogout }>
                 { renderLogout }
-            </Form>
+            </Form> */}
         </div>
     );
 };

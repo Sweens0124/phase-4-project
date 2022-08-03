@@ -19,7 +19,7 @@ function LoginPage () {
       password
     }
     // Logs in user
-    fetch(`/login`, {
+    fetch('/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(user)

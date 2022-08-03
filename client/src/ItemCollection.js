@@ -3,7 +3,7 @@ import ItemCard from "./ItemCard"
 import Navbar from './Navbar';
 
 function ItemCollection ({ items, updateItem, removeForever, fetchItems }) {
-
+console.log(items)
   const itemInfo = items.map((item) => (
     <ItemCard
       key={ item.id }

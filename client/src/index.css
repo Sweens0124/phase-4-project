@@ -15,19 +15,6 @@ html {
 }
 
 #login {
-  /* background-color: rgb(102, 219, 232);
-  font-size: 18px;
-  width: 400px;
-  height: 200px;
-  padding: 20px;
-  border: 1px solid black;
-  border-radius: 25%;
-  margin-top: 10%;
-  margin-left: auto;
-  margin-right: auto;
-  position:relative;
-  padding-top: 50px;
-  text-align: center; */
   background-image: url(https://media.istockphoto.com/photos/nobody-at-garage-sale-picture-id1262901956?k=20&m=1262901956&s=612x612&w=0&h=hfvguVH_ZvfJlceaYdETKB1vYzxhRCu9Geg6u6Hmz60=);
   background-size: 100%;
   height: 100%;
@@ -43,7 +30,6 @@ html {
 
 #logincolor {
   padding-top: 40px;
-  /* padding-left: 15px; */
   color: #f9f8f8;
   text-shadow: 2px .5px rgb(79, 73, 73);
   font-size: 60px;
@@ -65,12 +51,12 @@ html {
 #submit_signup {
 
 } */
+
 h1 {
   color: #f9f8f8;
 text-shadow: 2px 3px rgb(79, 73, 73);
 font-size: xxx-large;
 padding-left: 15px;
-
 }
 
 h2 {
@@ -95,32 +81,12 @@ h2 {
   margin: auto;
 }
 
-/* .login:before {
-  margin: auto;
-  content:"";
-  width:2px;
-  display:block;
-  height: 100%;
-  left:50%;
-  position:absolute;
-	background-image: -webkit-linear-gradient(to bottom, #fff, #000, #fff);
-  background-image: -moz-linear-gradient(to bottom, #fff, #000, #fff);
-  background-image: -ms-linear-gradient(to bottom, #fff, #000, #fff);
-  background-image: -o-linear-gradient(to bottom, #fff, #000, #fff);
-  background-image: linear-gradient(to bottom, #fff, #000, #fff);
-} */
-
 #website_info, #login_form{
   display: inline-block;
   box-sizing: border-box;
   width: 45%;
   height: 100%;
 }
-/* #website_info {
-
-}
-#login_form {
-} */
 
 .item_card {
   text-align: left;
@@ -150,9 +116,7 @@ h2 {
   color: rgb(133, 70, 70);
 }
 
-
 /* button on itemCards */
-
 .item_button {
   position: flex;
   margin-left: 55%;
