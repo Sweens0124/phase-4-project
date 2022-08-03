@@ -5,6 +5,7 @@ import UserPage from './UserPage';
 import ItemForm from "./ItemForm";
 import ItemCollection from './ItemCollection';
 import SignUp from './Signup';
+import Contact from './Contact';
 
 
 function App () {
