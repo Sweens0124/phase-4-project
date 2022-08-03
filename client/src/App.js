@@ -7,7 +7,6 @@ import ItemCollection from './ItemCollection';
 import SignUp from './Signup';
 import Contact from './Contact';
 
-
 function App () {
   const [ users, setUsers ] = useState([])
   const [ items, setItems ] = useState([])

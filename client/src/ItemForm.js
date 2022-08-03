@@ -18,7 +18,7 @@ function ItemForm ({ users, garageSales }) {
     e.preventDefault()
 
     const formData = new FormData()
-    formData.append('user_id', users[ 3 ].id)
+    formData.append('user_id', users[ 1 ].id)
     formData.append('garage_sale_id', garageSales[ 0 ].id)
     formData.append('name', name)
     formData.append('description', description)
