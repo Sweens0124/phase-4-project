@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function LoginPage () {
+function LoginPage ({ setIsLoggedIn }) {
   const [ formData, setFormData ] = useState({
     username: '',
     email: '',
@@ -27,6 +27,7 @@ function LoginPage () {
       .then(res => {
         if (res.ok) {
           res.json().then(user => {
+            setIsLoggedIn(true)
             navigate(`/users/${user.id}`)
           })
         } else {
@@ -72,10 +73,10 @@ function LoginPage () {
             />
           </div>
           <div>
-            <button id='submit_login' type='submit'>Login</button>
+            <button id='submit_login' className="ui button" type='submit'>Login</button>
           </div>
           <div>
-            <button id='submit_signup' onClick={ navigateToSignUp } type='submit'>Signup Here!</button>
+            <button id='submit_signup' onClick={ navigateToSignUp } className="ui button" type='submit'>Signup Here!</button>
           </div>
         </form>
       </div>

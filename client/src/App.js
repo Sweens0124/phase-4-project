@@ -11,6 +11,8 @@ function App () {
   const [ users, setUsers ] = useState([])
   const [ items, setItems ] = useState([])
   const [ garageSales, setGarageSales ] = useState([])
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
 
   useEffect(() => {
     fetch("/garage_sales")
@@ -33,8 +35,8 @@ function App () {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={ <LoginPage /> } />
-        <Route path='/browse-items' element={ <ItemCollection items={ items } /> } />
+        <Route path="/" element={ <LoginPage setIsLoggedIn={setIsLoggedIn}/> } />
+        <Route path='/browse-items' element={ <ItemCollection items={ items } isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} /> } />
         <Route path='/users/:id' element={ <UserPage items={ items } /> } />
         <Route path='/signup' element={ <SignUp /> } />
         <Route path='/item-form' element={ <ItemForm users={ users } garageSales={ garageSales } /> } />
