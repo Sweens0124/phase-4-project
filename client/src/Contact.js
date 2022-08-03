@@ -11,7 +11,7 @@ const Contact = () => {
           <div><a href="mailto: kiranphillips61@gmail.com">kiranphillips61@gmail.com</a></div>
           <div><a href="https://github.com/kiranphillips">github</a></div>
           <div><a href="https://www.linkedin.com/in/kiran-phillips-925055b9/">linkedin</a></div>
-          <h2>Lucas Sweeny</h2>
+        <h2>Lucas Sweeney</h2>
           <div><a href="mailto: lsweeney0124@gmail.com">lsweeney0124@gmail.com</a></div>
           <div><a href="https://github.com/scdorsey22">github</a></div>
           <div><a href="https://www.linkedin.com/in/lucas-sweeney-b7840023b/">linkedin</a></div>
