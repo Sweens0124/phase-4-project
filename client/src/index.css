@@ -54,17 +54,6 @@ html {
  border-color: rgb(169, 114, 4);
 }
 
-/* .logininput {
-
-}
-
-#submit_login {
-
-}
-
-#submit_signup {
-
-} */
 h1 {
   color: #f9f8f8;
 text-shadow: 2px 3px rgb(79, 73, 73);
@@ -116,14 +105,9 @@ h2 {
   width: 45%;
   height: 100%;
 }
-/* #website_info {
-
-}
-#login_form {
-} */
 
 .item_card {
-  text-align: left;
+  text-align: center;
   border: 1px solid black;
   width: 225px;
 }
@@ -174,7 +158,7 @@ h2 {
   quotes: auto;
   text-align: center;
   text-decoration: none;
-  transition: all .15s;
+  transition: all .5s;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
@@ -237,13 +221,22 @@ a:active {
 }
 
 .item_img {
-  height: 100px;
-  width: 75px;
+  height: 150px;
+  width: 125px;
 }
 
+#lightbox {
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0,0,0,0.9);
+  cursor: pointer;
+}
 
-
-
-
-
-
+.lightbox_img {
+  height: 400px;
+  width: 300px;
+}

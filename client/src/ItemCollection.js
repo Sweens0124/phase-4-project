@@ -2,15 +2,12 @@ import React from "react";
 import ItemCard from "./ItemCard"
 import Navbar from './Navbar';
 
-function ItemCollection ({ items, updateItem, removeForever, fetchItems }) {
+function ItemCollection ({ items }) {
 
   const itemInfo = items.map((item) => (
     <ItemCard
       key={ item.id }
       item={ item }
-      updateItem={ updateItem }
-      onItemDelete={ removeForever }
-      fetchItems={ fetchItems }
     />
   ))
   return (
