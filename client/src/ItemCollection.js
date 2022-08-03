@@ -2,7 +2,7 @@ import React from "react";
 import ItemCard from "./ItemCard"
 import Navbar from './Navbar';
 
-function ItemCollection ({ items }) {
+function ItemCollection ({ items, isLoggedIn, setIsLoggedIn }) {
 
   const itemInfo = items.map((item) => (
     <ItemCard
@@ -11,8 +11,8 @@ function ItemCollection ({ items }) {
     />
   ))
   return (
-    <div className="ui five column grid">
-      <Navbar />
+    <div className="ui four column grid">
+      <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       <div id="itemCard">
         { itemInfo }
       </div>
