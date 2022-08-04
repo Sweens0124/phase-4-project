@@ -1,16 +1,24 @@
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import Navbar from './Navbar'
+// import ItemForm from "./ItemForm"
 
-function UserPage ({ items }) {
+function UserPage ({ setIsLoggedIn }) {
   const [ user, setUser ] = useState()
   const [ loading, setLoading ] = useState(true)
   const [ errors, setErrors ] = useState(false)
   const [ itemClicked, setItemClicked ] = useState(0)
+  const [ items, setItems ] = useState([])
 
   const params = useParams()
   const { id } = params
 
+  useEffect(() => {
+    setIsLoggedIn(sessionStorage.getItem("loggedIn"))
+    fetch("/items")
+      .then((r) => r.json())
+      .then((items) => setItems(items));
+  }, []);
+  
   useEffect(() => {
     fetch(`/users/${id}`)
       .then(res => {
@@ -23,7 +31,6 @@ function UserPage ({ items }) {
           res.json().then(data => setErrors(data.error))
         }
       })
-
   }, [])
 
   const handleClick = (e) => {
@@ -39,14 +46,14 @@ function UserPage ({ items }) {
     return (
       <>
         <div>
-          <Navbar />
+          {/* <ItemForm /> */}
           <h1>{ user.username }</h1>
           <h3>Items:</h3>
           { user.items.map((item) => (
             <div className='item_card' key={ item.id }>
               <h2>{ item.name }</h2>
               <p>Price: ${ item.price }</p>
-              <img className='item_img' src={ item.image } />
+              <img className='item_img' src={ item.image } alt="addedimage"/>
               <button onClick={ handleClick } value={ item.id }>View Item Details</button>
             </div>
           )) }
