@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function LoginPage ({ setIsLoggedIn }) {
+function LoginPage ({ setLoggedInUserId, setIsLoggedIn }) {
   const [ formData, setFormData ] = useState({
     username: '',
     email: '',
@@ -28,6 +28,8 @@ function LoginPage ({ setIsLoggedIn }) {
         if (res.ok) {
           res.json().then(user => {
             setIsLoggedIn(true)
+            sessionStorage.setItem("loggedIn", true)
+            setLoggedInUserId(user.id)
             navigate(`/users/${user.id}`)
           })
         } else {
