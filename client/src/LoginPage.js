@@ -61,7 +61,6 @@ function LoginPage ({ setLoggedInUserId, setIsLoggedIn }) {
               type='text'
               name='username'
               placeholder='Username'
-              fluid lable='username'
               value={ formData.username }
               onChange={ handleChange }
             />
