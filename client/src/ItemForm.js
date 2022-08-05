@@ -4,7 +4,7 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 
-function ItemForm ({ users, garageSales }) {
+function ItemForm ({ closeModal, loggedInUserId, onAddItem }) {
   const [ show, setShow ] = useState(true);
 
   const [ name, setName ] = useState('')
@@ -17,37 +17,36 @@ function ItemForm ({ users, garageSales }) {
   const handleItemSubmit = (e) => {
     e.preventDefault()
 
-    const formData = new FormData()
-    formData.append('user_id', users[ 1 ].id)
-    formData.append('garage_sale_id', garageSales[ 0 ].id)
-    formData.append('name', name)
-    formData.append('description', description)
-    formData.append('condition', condition)
-    formData.append('category', category)
-    formData.append('price', price)
-    formData.append('image', image)
-
-    fetch('/items', {
-      method: 'POST',
-      body: formData
-    })
-
+    const newItem = {
+      "user_id": loggedInUserId,
+      "garage_sale_id": 1,
+      name,
+      description,
+      condition,
+      category,
+      price,
+      image,
+    }
+    onAddItem(newItem)
+    handleClose()
   }
+
+  const handleClose = () => {
+    setShow(false)
+    closeModal()
+  };
 
   return (
     <>
-      <Modal show={ show } >
+      <Modal show={ show } onHide={handleClose}>
+      <Modal.Header closeButton>
         <Modal.Title>Add New Item:</Modal.Title>
+      </Modal.Header>
         <Modal.Body>
           <Form onSubmit={ handleItemSubmit }>
             <Form.Group className="mb-3" controlId="formBasicName">
               <Form.Label>Name</Form.Label>
               <Form.Control name='name' value={ name } onChange={ (e) => setName(e.target.value) } placeholder="Enter Name" />
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="formBasicPrice">
-              <Form.Label>Price</Form.Label>
-              <Form.Control name='price' value={ price } onChange={ (e) => setPrice(e.target.value) } placeholder="Price" />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicDescription">
@@ -56,8 +55,17 @@ function ItemForm ({ users, garageSales }) {
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicSelect">
+              <Form.Label>Condition</Form.Label>
+              <Form.Select name="condition" value={ condition } onChange={ (e) => setCondition(e.target.value) }>
+                <option value="0">Select a Condition</option>
+                <option value="Great">Great</option>
+                <option value="Good">Good</option>
+                <option value="Bad">Bad</option>
+              </Form.Select>
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicSelect">
               <Form.Label>Category</Form.Label>
-              {/* <Form.Control value={ formData.category } hidden /> */ }
               <Form.Select name="category" value={ category } onChange={ (e) => setCategory(e.target.value) }>
                 <option value="">Select a Category</option>
                 <option value="Music">Music</option>
@@ -69,23 +77,22 @@ function ItemForm ({ users, garageSales }) {
               </Form.Select>
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicSelect">
-              <Form.Label>Condition</Form.Label>
-              <Form.Control value={ condition } hidden />
-              <Form.Select name="condition" value={ condition } onChange={ (e) => setCondition(e.target.value) }>
-                <option value="0">Select a Condition</option>
-                <option value="Great">Great</option>
-                <option value="Good">Good</option>
-                <option value="Bad">Bad</option>
-              </Form.Select>
+            <Form.Group className="mb-3" controlId="formBasicPrice">
+              <Form.Label>Price</Form.Label>
+              <Form.Control name='price' value={ price } onChange={ (e) => setPrice(e.target.value) } placeholder="Price" />
             </Form.Group>
 
-            <Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicImageUrl">
+                <Form.Label>Item Image</Form.Label>
+                <Form.Control value={image ? image : ''} onChange={ (e) => setImage(e.target.value) } placeholder={image} />
+            </Form.Group>
+
+            {/* <Form.Group>
               <Form.Label>
                 Upload image
               </Form.Label>
               <Form.Control name="image" type="file" accept="image/*" onChange={ (e) => setImage(e.target.files[ 0 ]) } />
-            </Form.Group>
+            </Form.Group> */}
 
             <ButtonGroup className="me-2" aria-label="Submit Button">
               <Button variant="outline-primary" type="submit">

@@ -98,7 +98,6 @@ function ItemCard ({ item, removeForever, handleUpdateItem, fetchAllItems }) {
 
             <Form.Group className="mb-3" controlId="formBasicSelect">
               <Form.Label>Condition</Form.Label>
-              <Form.Control value={enteredCondition} hidden />
               <Form.Select value={enteredCondition} onChange={conditionChangeHandler}>
                   <option value="Great">Great</option>
                   <option value="Good">Good</option>
@@ -108,7 +107,6 @@ function ItemCard ({ item, removeForever, handleUpdateItem, fetchAllItems }) {
 
             <Form.Group className="mb-3" controlId="formBasicSelect">
               <Form.Label>Category</Form.Label>
-              <Form.Control value={enteredCategory} hidden />
               <Form.Select value={enteredCategory} onChange={categoryChangeHandler}>
                   <option value="Furniture">Furniture</option>
                   <option value="Electronics">Electronics</option>
@@ -126,7 +124,7 @@ function ItemCard ({ item, removeForever, handleUpdateItem, fetchAllItems }) {
 
             <Form.Group className="mb-3" controlId="formBasicImageUrl">
                 <Form.Label>Item Image</Form.Label>
-                <Form.Control value={enteredImage} onChange={imageChangeHandler} placeholder={image} />
+                <Form.Control value={enteredImage ? enteredImage : ''} onChange={imageChangeHandler} placeholder={image} />
             </Form.Group>
 
             <ButtonGroup className="me-2" aria-label="Submit Button">
@@ -137,32 +135,12 @@ function ItemCard ({ item, removeForever, handleUpdateItem, fetchAllItems }) {
 
             <ButtonGroup className="me-2" aria-label="Delete Button">
                 <Button variant="outline-danger" onClick={(e) => removeForever(e, id)}>
-                    Delete
+                    Sold
                 </Button>
             </ButtonGroup>
           </Form>
         </Modal.Body>
       </Modal>
-      {/* <div className="item_browser">
-        <div className='item_card'>
-          <h2>{ name }</h2>
-          <h4>{ category }</h4>
-          <h4>{ condition }</h4>
-          <img className="item_img" src={ image } alt="" />
-          {/* <button className='item_button' onClick={ () => setShow(true) }>View Item</button> */}
-        {/* </div> */}
-      {/* </div> */}
-      {/* { show ?
-        <div id="lightbox">
-          <h1>{ name }</h1>
-          <h2>{ description }</h2>
-          <h2>${ price }</h2>
-          <h3>{ category }</h3>
-          <h3>{ condition }</h3>
-          <img className="lightbox_img" src={ image } alt="" /><br />
-          <button onClick={ () => setShow(false) }> Close </button>
-        </div>
-        : null } */}
     </>
   )
 }

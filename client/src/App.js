@@ -2,7 +2,6 @@ import LoginPage from "./LoginPage";
 import { Routes, Route } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import UserPage from './UserPage';
-import ItemForm from "./ItemForm";
 import ItemCollection from './ItemCollection';
 import SignUp from './Signup';
 import Contact from './Contact';
@@ -17,11 +16,12 @@ function App () {
 
   useEffect(() => {
     fetch("/garage_sales")
-      .then((r) => r.json())
-      .then((garageSales) => setGarageSales(garageSales));
+    .then((r) => r.json())
+    .then((garageSales) => setGarageSales(garageSales));
   }, []);
-
+  
   useEffect(() => {
+    setLoggedInUserId(sessionStorage.getItem("loggedInUserId"))
     fetch("/users")
       .then((r) => r.json())
       .then((users) => setUsers(users));
@@ -32,12 +32,10 @@ function App () {
       {isLoggedIn ? <Navbar loggedInUserId={loggedInUserId} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/> : null }
       <Routes>
         <Route path="/" element={ <LoginPage setLoggedInUserId={setLoggedInUserId} setIsLoggedIn={setIsLoggedIn}/> } />
-        <Route path='/browse-items' element={ <ItemCollection setIsLoggedIn={setIsLoggedIn} /> } />
+        <Route path='/browse-items' element={ <ItemCollection setIsLoggedIn={setIsLoggedIn} page={'items'} loggedInUserId={loggedInUserId} /> } />
         <Route path='/users/:id' element={ <UserPage setIsLoggedIn={setIsLoggedIn}/> } />
-        <Route path='/signup' element={ <SignUp /> } />
-        <Route path='/item-form' element={ <ItemForm users={ users } garageSales={ garageSales } /> } />
+        <Route path='/signup' element={ <SignUp setIsLoggedIn={setIsLoggedIn} setLoggedInUserId={setLoggedInUserId} /> } />
         <Route path='/contact' element={ <Contact setIsLoggedIn={setIsLoggedIn}/> } />
-
       </Routes>
     </div>
   );
