@@ -1,27 +1,30 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-function SignUp () {
-  const [ formData, setFormData ] = useState({
-    username: '',
-    email: '',
-    password: ''
-  })
-
+function SignUp ({ setIsLoggedIn, setLoggedInUserId }) {
+  // const [ formData, setFormData ] = useState({
+  //   username: '',
+  //   email: '',
+  //   password: ''
+  // })
+  const [ enteredUserName, setUserName ] = useState('')
+  const [ enteredEmail, setEmail ] = useState('')
+  const [ enteredPassword, setPassword ] = useState('')
 
   const [ errors, setErrors ] = useState([])
   const navigate = useNavigate()
-  const { username, email, password } = formData
+  // const { username, email, password } = formData
 
   function handleSubmit (e) {
+    console.log(e)
     e.preventDefault()
     const user = {
-      username,
-      email,
-      password
+      'username': enteredUserName,
+      'email': enteredEmail,
+      'password': enteredPassword,
     }
 
-    fetch(`/users`, {
+    fetch('/users', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(user)
@@ -29,48 +32,56 @@ function SignUp () {
       .then(res => {
         if (res.ok) {
           res.json().then(user => {
+            setIsLoggedIn(true)
+            sessionStorage.setItem("loggedIn", true)
+            sessionStorage.setItem("loggedInUserId", user.id)
+            setLoggedInUserId(user.id)
             navigate(`/users/${user.id}`)
           })
         } else {
           res.json().then(json => setErrors(Object.entries(json.errors)))
         }
       })
-
   }
 
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData({ ...formData, [ name ]: value })
+  const handleUsernameChange = (e) => {
+    setUserName(e.target.value)
+  }
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value)
+  }
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value)
   }
 
   return (
-    <div>
+    <div id="signup" >
       <h1 className="title">
-        CSS - Come Sell Stuff!
+        // CSS - Come $ell $tuff!
       </h1>
       <div className="login">
-        <div id="website_info">
-          <div>
-            Welcome to CSS, where you can buy or sell items at your local garage sale!
-          </div>
+        <div id="signupdiscription">
+          Welcome to CSS, buy or sell items at your local garage sale!
         </div>
-
-        <form id="login_form">
+        <div className="signUpForm">
           <label>
-            Username:
-          </label><br />
-          <input type="text" name="username" onChange={ handleChange } value={ username } /><br />
+            Username
+          </label>
+          <input type="text" name="username" onChange={ handleUsernameChange } value={ enteredUserName } /><br />
 
           <label>
             Email
           </label>
-          <input type='text' name='email' value={ email } onChange={ handleChange } />
+          <input type='text' name='email' value={ enteredEmail } onChange={ handleEmailChange } /><br/>
 
-          <label>Password:</label>
-          <input type="password" name="password" onChange={ handleChange } value={ password } />
-
-          <input type='submit' value='Sign up!' onSubmit={ handleSubmit } />
-        </form>
+          <label>
+            Password
+          </label>
+          <input type="password" name="password" onChange={ handlePasswordChange } value={ enteredPassword } />
+          <div className='signupFormButton'>
+            <button value='Sign up!' onClick={ handleSubmit }>Sign Up</button>
+          </div> 
+        </div>
       </div>
     </div>
   )

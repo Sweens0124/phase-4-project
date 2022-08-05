@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
 
 function LoginPage ({ setLoggedInUserId, setIsLoggedIn }) {
   const [ formData, setFormData ] = useState({
@@ -29,6 +30,7 @@ function LoginPage ({ setLoggedInUserId, setIsLoggedIn }) {
           res.json().then(user => {
             setIsLoggedIn(true)
             sessionStorage.setItem("loggedIn", true)
+            sessionStorage.setItem("loggedInUserId", user.id)
             setLoggedInUserId(user.id)
             navigate(`/users/${user.id}`)
           })
@@ -75,10 +77,10 @@ function LoginPage ({ setLoggedInUserId, setIsLoggedIn }) {
             />
           </div>
           <div>
-            <button id='submit_login' className="ui button" type='submit'>Login</button>
+            <Button id='submit_login' variant="dark" className="ui button" type='submit'>Login</Button>
           </div>
           <div>
-            <button id='submit_signup' onClick={ navigateToSignUp } className="ui button" type='submit'>Signup Here!</button>
+            <Button id='submit_signup' variant="dark" onClick={ navigateToSignUp } className="ui button" type='submit'>Signup Here!</Button>
           </div>
         </form>
       </div>
